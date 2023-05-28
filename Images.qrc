@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/resource">
+        <file>images/startpicture.png</file>
+        <file>images/pic1.png</file>
+        <file>images/pic2.png</file>
+        <file>images/pic3.png</file>
+        <file>images/pic4.png</file>
+        <file>images/shezhi.png</file>
+        <file>images/kpath.png</file>
+        <file>images/exit.png</file>
+        <file>images/start2.png</file>
+        <file>images/change.png</file>
+        <file>images/help.png</file>
+        <file>images/startpicture2.jpeg</file>
+        <file>images/startpicture3.jpg</file>
+    </qresource>
+</RCC>
