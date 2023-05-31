@@ -11,16 +11,22 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow), scene(new QGraphicsScene(this)), bird(new PacbirdClass),
       dropTimer(new QTimer)
 {
+    resize(1000, 700);
+    setWindowTitle("game");
     init();
     action();
+
 }
 
 void MainWindow::init(){
     ui->setupUi(this);
     scene->setSceneRect(0, 0, 800, 600);
-    scene->setBackgroundBrush(Qt::blue);
+   // scene->setBackgroundBrush(Qt::blue);
     ui->graphicsView->setScene(scene);
+    life = true;
+
     scene->addItem(bird);
+    connect(this, &MainWindow::lose, this, &MainWindow::Lose);
     for(int i = 0; i < 3; ++i){
         topGhost[i] = new GhostClass(i, 0);
         bottomGhost[i] = new GhostClass(i, 1);
@@ -41,7 +47,7 @@ void MainWindow::action(){
 
 void MainWindow::detectLose(){
     QPointF birdPos = bird->pos();
-    if(birdPos.y() <= 0 || birdPos.y() >= 600) emit lose();
+    if(birdPos.y() <= -10 || birdPos.y() >= 650) emit lose();
     for(int i = 0; i < 3; ++i)
         if((detectCollide(bird, topGhost[i]) || detectCollide(bird, bottomGhost[i])) && bird->isSuper() == 0)
             emit lose();
@@ -51,6 +57,16 @@ void MainWindow::keyPressEvent(QKeyEvent* event){
     if (event->key() == Qt::Key_Space) {
         bird->flap();
     }
+}
+
+void MainWindow::mousePressEvent(QMouseEvent *event){
+    if(event->button() == Qt::LeftButton && !life){
+        game *g = new game;
+        g->show();
+        this->close();
+
+    }
+
 }
 
 bool MainWindow::detectCollide(const QGraphicsPixmapItem* a, const QGraphicsPixmapItem* b){
@@ -103,6 +119,30 @@ void MainWindow::processDots(){
     }
 }
 
+void MainWindow::Lose()
+{
+    life = false;
+    disconnect(dropTimer, SIGNAL(timeout()), this, SLOT(advance()));
+    board = new ScoreBoard;
+    scene->addItem(board);
+    board->setPos(this->width() * 0.45, 365);
+
+
+    over = new GameOver;
+    scene->addItem(over);
+    over->setPos(this->width() * 0.45, 40);
+
+//    ExitButton *exBtn = new ExitButton(":/resource/images/exitbutton.png");
+//    exBtn->setParent(ui->graphicsView);
+
+//    QPoint pos = ui->graphicsView->pos();
+//    exBtn->resize(60, 40);
+//    exBtn->move(pos.x()+this->width() - 120, pos.y() + 10);
+
+//    connect(exBtn, &QPushButton::clicked, this, &QMainWindow::close);
+
+
+}
 MainWindow::~MainWindow()
 {
     delete ui;
