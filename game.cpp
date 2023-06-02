@@ -16,7 +16,7 @@ game::game(QWidget *parent)
     setAutoFillBackground(true);
     ui->setupUi(this);
     this->resize(QSize(1000,700));
-    QSound*music=new QSound(":/music/music/new.wav");
+    QSound *music=new QSound(":/music/music/new.wav");
     music->setLoops(-1);
     music->play();
 
@@ -47,7 +47,7 @@ void game::on_quitbutton_clicked()
 void game::on_startbutton_clicked()
 {
     this->close();
-    gameinit *newgame=new gameinit();
+    MainWindow *newgame=new MainWindow();
     newgame->show();
 }
 

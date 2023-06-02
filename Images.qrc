@@ -13,5 +13,10 @@
         <file>images/help.png</file>
         <file>images/startpicture2.jpeg</file>
         <file>images/startpicture3.jpg</file>
+        <file>images/exitbutton.png</file>
+        <file>images/game_is_over.png</file>
+        <file>images/456px-Pacman.svg.png</file>
+        <file>images/Studio_Project_(1).png</file>
+        <file>images/Studio_Project_(1) (1).png</file>
     </qresource>
 </RCC>
