@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>game_is_over.png</file>
+        <file>ScoreBoard .png</file>
+        <file>exitbutton.png</file>
+    </qresource>
+</RCC>

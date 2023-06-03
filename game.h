@@ -1,8 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
-
+#include <QSoundEffect>
 #include <QWidget>
-
+#include <mainwindow.h>
 QT_BEGIN_NAMESPACE
 namespace Ui { class game; }
 QT_END_NAMESPACE

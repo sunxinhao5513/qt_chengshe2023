@@ -9,9 +9,18 @@
         <file>images/kpath.png</file>
         <file>images/exit.png</file>
         <file>images/start2.png</file>
-        <file>images/change.png</file>
-        <file>images/help.png</file>
         <file>images/startpicture2.jpeg</file>
         <file>images/startpicture3.jpg</file>
+        <file>images/game_is_over.png</file>
+        <file>images/456px-Pacman.svg.png</file>
+        <file>images/Studio_Project_(1).png</file>
+        <file>images/Studio_Project_(1) (1).png</file>
+        <file>images/change1.png</file>
+        <file>images/start.png</file>
+        <file>images/765395.jpg</file>
+        <file>images/question-mark.png</file>
+        <file>images/setting.png</file>
+        <file>images/black.png</file>
+        <file>images/background.png</file>
     </qresource>
 </RCC>

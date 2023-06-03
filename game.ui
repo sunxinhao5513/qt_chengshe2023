@@ -10,25 +10,19 @@
     <height>700</height>
    </rect>
   </property>
-  <property name="minimumSize">
-   <size>
-    <width>1000</width>
-    <height>700</height>
-   </size>
-  </property>
   <property name="windowTitle">
    <string>game</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">border-image: url(:/resource/images/startpicture3.jpg);</string>
+   <string notr="true">border-image: url(:/resource/images/765395.jpg);</string>
   </property>
   <widget class="QPushButton" name="quitbutton">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>580</y>
-     <width>400</width>
-     <height>90</height>
+     <x>400</x>
+     <y>530</y>
+     <width>201</width>
+     <height>181</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -37,15 +31,8 @@
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
-   <property name="minimumSize">
-    <size>
-     <width>400</width>
-     <height>90</height>
-    </size>
-   </property>
    <property name="styleSheet">
-    <string notr="true">background-image: url(:/resource/images/exit.png);
-border-image: url(:/resource/images/exit.png);</string>
+    <string notr="true">border-image: url(:/resource/images/exit.png);</string>
    </property>
    <property name="text">
     <string/>
@@ -54,10 +41,10 @@ border-image: url(:/resource/images/exit.png);</string>
   <widget class="QPushButton" name="startbutton">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>460</y>
-     <width>421</width>
-     <height>90</height>
+     <x>380</x>
+     <y>380</y>
+     <width>233</width>
+     <height>206</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -79,8 +66,7 @@ border-image: url(:/resource/images/exit.png);</string>
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-image: url(:/resource/images/start2.png);
-border-image: url(:/resource/images/start2.png);</string>
+    <string notr="true">border-image: url(:/resource/images/start.png);</string>
    </property>
    <property name="text">
     <string/>
@@ -108,7 +94,7 @@ border-image: url(:/resource/images/start2.png);</string>
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/resource/images/change.png);</string>
+    <string notr="true">border-image: url(:/resource/images/setting.png);</string>
    </property>
    <property name="text">
     <string/>
@@ -117,10 +103,10 @@ border-image: url(:/resource/images/start2.png);</string>
   <widget class="QToolButton" name="helpbutton">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>660</y>
-     <width>40</width>
-     <height>40</height>
+     <x>20</x>
+     <y>620</y>
+     <width>51</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -136,12 +122,48 @@ border-image: url(:/resource/images/start2.png);</string>
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/resource/images/help.png);</string>
+    <string notr="true">border-image: url(:/resource/images/question-mark.png);</string>
    </property>
    <property name="text">
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>80</y>
+     <width>951</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Lot</family>
+     <pointsize>56</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/resource/images/black.png);
+color: yellow;
+font: 56pt &quot;Lot&quot;;
+</string>
+   </property>
+   <property name="text">
+    <string>PKU Flying Pacman</string>
+   </property>
+  </widget>
+  <zorder>quitbutton</zorder>
+  <zorder>startbutton</zorder>
+  <zorder>helpbutton</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>label</zorder>
  </widget>
  <resources/>
  <connections/>
