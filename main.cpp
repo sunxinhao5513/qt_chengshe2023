@@ -1,5 +1,5 @@
 #include "game.h"
-
+#include <QFontDatabase>
 #include <QApplication>
 
 int main(int argc, char *argv[])

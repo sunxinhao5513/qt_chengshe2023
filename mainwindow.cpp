@@ -21,7 +21,8 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::init(){
     ui->setupUi(this);
     scene->setSceneRect(0, 0, 800, 600);
-   // scene->setBackgroundBrush(Qt::blue);
+    QPixmap backgroundPixmap(":/resource/images/background.png");
+    scene->setBackgroundBrush(QBrush(backgroundPixmap));
     ui->graphicsView->setScene(scene);
     life = true;
 
