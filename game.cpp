@@ -2,7 +2,7 @@
 #include "ui_game.h"
 #include <QPainter>
 #include <QPaintEvent>
-#include <QSound>
+#include <QSoundEffect>
 #include <QComboBox>
 #include "helpwindow.h"
 #include "gameinit.h"
@@ -16,15 +16,15 @@ game::game(QWidget *parent)
     setAutoFillBackground(true);
     ui->setupUi(this);
     this->resize(QSize(1000,700));
-    QSound *music=new QSound(":/music/music/new.wav");
-    music->setLoops(-1);
+    QSoundEffect *music=new QSoundEffect();
+    music->setSource(QUrl::fromLocalFile("://music/Flappy-Bird-Theme-Song.wav"));
+    music->setLoopCount(-1);
     music->play();
-
 
 }
 void game::paintEvent(QPaintEvent *event){
     QPainter p(this);
-    p.drawPixmap(0,0,this->width(),this->height(),QPixmap(":/resource/images/startpicture3.jpg"));
+    p.drawPixmap(0,0,this->width(),this->height(),QPixmap(":/resource/images/765395.jpg"));
 }
 
 game::~game()

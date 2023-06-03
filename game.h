@@ -1,6 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
-#include <QSound>
+#include <QSoundEffect>
 #include <QWidget>
 #include <mainwindow.h>
 QT_BEGIN_NAMESPACE
