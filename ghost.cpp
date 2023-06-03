@@ -35,19 +35,25 @@ void GhostClass::init(int num){
     }
     if(flag == 0){
         int randomnum = QRandomGenerator::global()->bounded(175);
-        setPos(800 + 300 * num, -150 + randomnum);
+        setPos(1000 + 300 * num, -200 + randomnum); left = false;
     }
     else{
         int randomnum = QRandomGenerator::global()->bounded(175);
-        setPos(800 + 300 * num, 550 - randomnum);
+        setPos(1000 + 300 * num, 550 - randomnum); left = false;
     }
 }
 
 void GhostClass::updatePosition(){
     setPos(x() - speed, y());
-    if(x() < -150) init();
+    if(x() < -200) init();
 }
 
+bool GhostClass::checkpos(){
+    if(left == false && x() < 375){
+        left = true; return true;
+    }
+    else return false;
+}
 GhostClass::~GhostClass(){
     delete ghostImage;
     delete color;

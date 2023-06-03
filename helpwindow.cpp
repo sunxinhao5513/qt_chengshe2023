@@ -1,7 +1,5 @@
 #include "helpwindow.h"
 #include "ui_helpwindow.h"
-#include <QPaintEvent>
-#include <QPainter>
 
 helpwindow::helpwindow(QWidget *parent) :
     QWidget(parent),
@@ -9,20 +7,15 @@ helpwindow::helpwindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->resize(QSize(600,300));
-    setWindowTitle("help");
+    ui->helptext->insertPlainText("按压空格以操纵角色跳跃");
 }
 
 helpwindow::~helpwindow()
 {
     delete ui;
 }
-void helpwindow::paintEvent(QPaintEvent *event){
-    QPainter p(this);
-    p.drawPixmap(0,0,this->width(),this->height(),QPixmap(":/resource/images/help.jpg"));
-}
 
-void helpwindow::on_back_clicked()
+void helpwindow::on_pushButton_clicked()
 {
     this->close();
 }
-

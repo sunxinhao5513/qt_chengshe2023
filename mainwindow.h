@@ -1,4 +1,3 @@
-void on_pushButton_clicked();
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -11,11 +10,10 @@ void on_pushButton_clicked();
 #include <QPixmap>
 #include <QTimer>
 #include <QKeyEvent>
-#include "scorebird.h"
-#include "gameover.h"
-#include "exitbutton.h"
-#include "game.h"
-#include "stoppage.h"
+#include <QTextEdit>
+#include <QDataStream>
+#include <QTextStream>
+//#include "game.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -35,8 +33,6 @@ public slots:
     void advance();//更新游戏场景
     void detectLose();//检测是否失败，失败则会释放出信号lose()
 
-private slots:
-
 private:
     void action();//用于初始化
     void init();//用于初始化
@@ -45,23 +41,22 @@ private:
     bool detectCollide(const QGraphicsPixmapItem* a, const QGraphicsPixmapItem* b);//检查两物体是否碰撞 //TODO：碰撞的效果展现
     void updatePosition();//更新各物体位置
     void processDots();//处理点的刷新
+    void updatescore();//分数更新
     void Lose(); //失败后的事件
+    void read_maxscore();
+    void write_maxscore();
+
     Ui::MainWindow *ui;
     QGraphicsScene* scene;//游戏场景
     PacbirdClass* bird;//bird
-    GhostClass* topGhost[3];//上面的ghost
-    GhostClass* bottomGhost[3];//下面的ghost
+    GhostClass* topGhost[4];//上面的ghost
+    GhostClass* bottomGhost[4];//下面的ghost
     QVector<dotClass*> dots;//dot
     QTimer* dropTimer;//用于更新场景的计时器
-    ScoreBoard *board;
-    GameOver *over;
-    ExitButton *exit;
+
     bool life; //游戏是否
     int score = 0;//分数 //TODO：合理的数值设计
-
-    // QWidget interface
-protected:
-    void keyReleaseEvent(QKeyEvent *event) override;
+    int max_score = 0; //记录最大分数
 };//TODO:背景、音乐
 
 #endif // MAINWINDOW_H

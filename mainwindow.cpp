@@ -6,16 +6,16 @@
 #include <QGraphicsPixmapItem>
 #include <QPixmap>
 #include <QTimer>
-#include "stoppage.h"
+#include <QTextEdit>
+#include <QDataStream>
+#include <QTextStream>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow), scene(new QGraphicsScene(this)), bird(new PacbirdClass),
       dropTimer(new QTimer)
 {
-    resize(1000, 700);
     setWindowTitle("game");
     init();
     action();
-
 
 }
 
@@ -25,17 +25,29 @@ void MainWindow::init(){
     QPixmap backgroundPixmap(":/resource/images/background.png");
     scene->setBackgroundBrush(QBrush(backgroundPixmap));
     ui->graphicsView->setScene(scene);
+    //结束界面隐藏
+    ui->textEdit->setTextInteractionFlags(Qt::NoTextInteraction);
+//结束界面隐藏
+    ui->textEdit_2->hide();
+    ui->textEdit_3->hide();
+    ui->textEdit_4->hide();
+    ui->textEdit_5->hide();
+
+
+
+
+    updatescore();
     life = true;
 
     scene->addItem(bird);
     connect(this, &MainWindow::lose, this, &MainWindow::Lose);
-    for(int i = 0; i < 3; ++i){
+    for(int i = 0; i < 4; ++i){
         topGhost[i] = new GhostClass(i, 0);
         bottomGhost[i] = new GhostClass(i, 1);
         scene->addItem(bottomGhost[i]);
         scene->addItem(topGhost[i]);
     }
-    for(int i = 0; i < 10; ++i){
+    for(int i = 0; i < 8; ++i){
         dotClass* newDot = new dotClass;
         scene->addItem(newDot);
         dots.push_back(newDot);
@@ -49,8 +61,8 @@ void MainWindow::action(){
 
 void MainWindow::detectLose(){
     QPointF birdPos = bird->pos();
-    if(birdPos.y() <= -10 || birdPos.y() >= 650) emit lose();
-    for(int i = 0; i < 3; ++i)
+    if(birdPos.y() <= -30 || birdPos.y() >= 650) emit lose();
+    for(int i = 0; i < 4; ++i)
         if((detectCollide(bird, topGhost[i]) || detectCollide(bird, bottomGhost[i])) && bird->isSuper() == 0)
             emit lose();
 }
@@ -58,16 +70,6 @@ void MainWindow::detectLose(){
 void MainWindow::keyPressEvent(QKeyEvent* event){
     if (event->key() == Qt::Key_Space) {
         bird->flap();
-    }
-    if (event->key() == Qt::Key_S) {
-        disconnect(dropTimer, SIGNAL(timeout()), this, SLOT(advance()));
-        //stop->show();
-    }
-}
-void MainWindow::keyReleaseEvent(QKeyEvent *event){
-    if(event->key() == Qt::Key_S){
-        connect(dropTimer, SIGNAL(timeout()), this, SLOT(advance()));
-        //stop->close();
     }
 }
 
@@ -90,8 +92,18 @@ bool MainWindow::detectCollide(const QGraphicsPixmapItem* a, const QGraphicsPixm
     else return 0;
 }
 
+void MainWindow::updatescore(){
+
+    ui->textEdit->setTextColor(QColor(255, 241, 67));
+
+    QString s = "Score:";
+    s.append(QString::number(score, 10));
+    ui->textEdit->setText(s);
+}
+
 void MainWindow::advance(){
-    score += 1;
+
+    updatescore();
     updatePosition();
     detectLose();
     processDots();
@@ -99,7 +111,8 @@ void MainWindow::advance(){
 
 void MainWindow::updatePosition(){
     bird->updatePosition();
-    for(int i = 0; i < 3; ++i){
+    for(int i = 0; i < 4; ++i){
+        if(topGhost[i]->checkpos()) score++;
         topGhost[i]->updatePosition();
         bottomGhost[i]->updatePosition();
     }
@@ -107,11 +120,12 @@ void MainWindow::updatePosition(){
         dot->updatePosition();
 }
 
+
 void MainWindow::processDots(){
     for(auto& dot :dots){
         while(true){
             bool flag = 1;
-            for(int i = 0; i < 3; ++i)
+            for(int i = 0; i < 4; ++i)
                 if(detectCollide(dot, topGhost[i]) || detectCollide(dot, bottomGhost[i])){
                     dot->reset();
                     flag = 0;
@@ -119,52 +133,77 @@ void MainWindow::processDots(){
                 }
             if(flag) break;
         }
-        for(int i = 0; i < 3; ++i)
+        for(int i = 0; i < 4; ++i)
             while(detectCollide(dot, topGhost[i]) || detectCollide(dot, bottomGhost[i])){
                 dot->reset();
             }
         if(detectCollide(dot, bird)){
-            if(dot->isCapsule()) bird->onSuper();
-            score += 10;
+            if(dot->isCapsule()) bird->onSuper(), score += 5;
+            score += 1;
             dot->reset();
         }
     }
 }
+void MainWindow::read_maxscore()
+{
+    QFile file("../flying_pacman/score.txt");
+    bool isOK = file.open(QIODevice::ReadOnly);
+    if(isOK == true){
+        QTextStream stream(&file);
+        stream >> max_score;
+
+    }
+
+    if(max_score < score) max_score = score;
+    file.close();
+}
+
+void MainWindow::write_maxscore()
+{
+    QFile file("../flying_pacman/score.txt");
+    bool isOK = file.open(QIODevice::WriteOnly);
+    if(isOK == true){
+        QTextStream stream(&file);
+        stream << max_score;
+    }
+
+    file.close();
+}
 
 void MainWindow::Lose()
 {
-    life = false;
     disconnect(dropTimer, SIGNAL(timeout()), this, SLOT(advance()));
-    board = new ScoreBoard;
-    scene->addItem(board);
-    board->setPos(this->width() * 0.45, 365);
+    life = false;
+
+    read_maxscore();
+    write_maxscore();
+
+    ui->textEdit_2->setTextInteractionFlags(Qt::NoTextInteraction);
+    ui->textEdit_3->setTextInteractionFlags(Qt::NoTextInteraction);
+    ui->textEdit_4->setTextInteractionFlags(Qt::NoTextInteraction);
+    ui->textEdit_5->setTextInteractionFlags(Qt::NoTextInteraction);
 
 
-    over = new GameOver;
-    scene->addItem(over);
-    over->setPos(this->width() * 0.45, 40);
 
-//    ExitButton *exBtn = new ExitButton(":/resource/images/exitbutton.png");
-//    exBtn->setParent(ui->graphicsView);
+    ui->textEdit_4->moveCursor(QTextCursor::End);
+    ui->textEdit_5->moveCursor(QTextCursor::End);
+    ui->textEdit_4->insertPlainText(QString::number(score));
+    ui->textEdit_5->insertPlainText(QString::number(max_score));
 
-//    QPoint pos = ui->graphicsView->pos();
-//    exBtn->resize(60, 40);
-//    exBtn->move(pos.x()+this->width() - 120, pos.y() + 10);
-
-//    connect(exBtn, &QPushButton::clicked, this, &QMainWindow::close);
-
-
+    ui->textEdit_2->show();
+    ui->textEdit_3->show();
+    ui->textEdit_4->show();
+    ui->textEdit_5->show();
 }
 MainWindow::~MainWindow()
 {
     delete ui;
     delete scene;
     delete bird;
-    for(int i = 0; i < 3; ++i){
+    for(int i = 0; i < 4; ++i){
         delete topGhost[i];
         delete bottomGhost[i];
     }
     delete dropTimer;
+
 }
-
-

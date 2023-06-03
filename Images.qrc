@@ -22,7 +22,5 @@
         <file>images/setting.png</file>
         <file>images/black.png</file>
         <file>images/background.png</file>
-        <file>images/help.jpg</file>
-        <file>images/back.png</file>
     </qresource>
 </RCC>

@@ -16,13 +16,10 @@ public:
     ~helpwindow();
 
 private slots:
-
-    void on_back_clicked();
+    void on_pushButton_clicked();
 
 private:
     Ui::helpwindow *ui;
-protected:
-    void paintEvent(QPaintEvent *event);
 };
 
 #endif // HELPWINDOW_H

@@ -22,7 +22,7 @@ bool PacbirdClass::isSuper() const{
 void PacbirdClass::onSuper(){
     super = 1;
     superTimer->start(4000);
-    setScale(0.16);
+    setScale(0.15);
 }
 
 void PacbirdClass::offSuper(){
@@ -33,7 +33,7 @@ void PacbirdClass::offSuper(){
 
 void PacbirdClass::updatePosition(){
     speed += 1;
-    setPos(x(), y() + speed);
+    setPos(x(), y() + speed * 2 / 3);
 }
 
 void PacbirdClass::flap(){

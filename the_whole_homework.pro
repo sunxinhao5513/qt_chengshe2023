@@ -19,27 +19,21 @@ SOURCES += \
     bird.cpp \
     changewindow.cpp \
     dot.cpp \
-    exitbutton.cpp \
     game.cpp \
-    gameover.cpp \
     ghost.cpp \
     helpwindow.cpp \
     main.cpp \
     mainwindow.cpp \
-    scorebird.cpp \
     stoppage.cpp
 
 HEADERS += \
     bird.h \
     changewindow.h \
     dot.h \
-    exitbutton.h \
     game.h \
-    gameover.h \
     ghost.h \
     helpwindow.h \
     mainwindow.h \
-    scorebird.h \
     stoppage.h
 
 FORMS += \
