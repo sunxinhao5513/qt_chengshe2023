@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/music"/>
+    <qresource prefix="/">
+        <file>music/Flappy-Bird-Theme-Song.wav</file>
+    </qresource>
+</RCC>
