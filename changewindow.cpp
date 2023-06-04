@@ -11,20 +11,37 @@ changewindow::changewindow(QWidget *parent) :
     ui(new Ui::changewindow)
 {
     ui->setupUi(this);
-    QButtonGroup *yinx=new QButtonGroup(this);
     yinx->addButton(ui->yinxiaok);
     yinx->addButton(ui->yinxiaog);
+    ui->yinxiaok->setChecked(true);
 }
 void changewindow::paintEvent(QPaintEvent *event){
     QPainter p(this);
-    p.drawPixmap(0,0,this->width(),this->height(),QPixmap(":/resource/images/shezhi.png"));
+    p.drawPixmap(0,0,this->width(),this->height(),QPixmap(":/resource/images/Set.png"));
 }
 changewindow::~changewindow()
 {
     delete ui;
 }
-
-void changewindow::on_yinxiaok_clicked()
+void changewindow::on_back_clicked()
 {
-    game*start=(game*)parentWidget();
+    this->close();
+}
+void changewindow::on_yinxiaok_clicked(bool checked)
+{
+    if(checked == true)
+    {
+        music->play();
+        music->setLoopCount(music->Infinite);
+    }
+    else music->stop();
+}
+void changewindow::on_yinxiaog_clicked(bool checked)
+{
+    if(checked == true) music->stop();
+    else
+    {
+        music->play();
+        music->setLoopCount(music->Infinite);
+    }
 }

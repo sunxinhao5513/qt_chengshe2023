@@ -6,21 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>695</width>
-    <height>775</height>
+    <width>688</width>
+    <height>431</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(:/resource/images/shezhi.png);</string>
+   <string notr="true">background-image: url(:/resource/images/Set.png);</string>
   </property>
   <widget class="QRadioButton" name="yinxiaok">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>190</y>
+     <x>280</x>
+     <y>110</y>
      <width>100</width>
      <height>51</height>
     </rect>
@@ -39,11 +39,15 @@
    </property>
    <property name="font">
     <font>
+     <family>幼圆</family>
      <pointsize>20</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-image: url(:/resource/images/kpath.png);</string>
+    <string notr="true">background-image: url(:/resource/images/kpath.png);
+color: rgb(255, 241, 67);</string>
    </property>
    <property name="text">
     <string>开</string>
@@ -52,8 +56,8 @@
   <widget class="QRadioButton" name="yinxiaog">
    <property name="geometry">
     <rect>
-     <x>390</x>
-     <y>190</y>
+     <x>450</x>
+     <y>110</y>
      <width>100</width>
      <height>51</height>
     </rect>
@@ -72,11 +76,13 @@
    </property>
    <property name="font">
     <font>
+     <family>幼圆</family>
      <pointsize>20</pointsize>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-image: url(:/resource/images/kpath.png);</string>
+    <string notr="true">background-image: url(:/resource/images/kpath.png);
+color: rgb(255, 241, 67);</string>
    </property>
    <property name="text">
     <string>关</string>
@@ -86,7 +92,7 @@
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>190</y>
+     <y>110</y>
      <width>101</width>
      <height>51</height>
     </rect>
@@ -99,106 +105,36 @@
    </property>
    <property name="font">
     <font>
+     <family>幼圆</family>
      <pointsize>20</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-     <underline>true</underline>
+     <weight>50</weight>
+     <bold>false</bold>
+     <underline>false</underline>
      <kerning>true</kerning>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-image: url(:/resource/images/kpath.png);</string>
+    <string notr="true">background-image: url(:/resource/images/kpath.png);
+</string>
    </property>
    <property name="frameShadow">
     <enum>QFrame::Plain</enum>
    </property>
    <property name="text">
-    <string>音效</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#fff143;&quot;&gt;音效&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>260</y>
+     <x>0</x>
+     <y>0</y>
      <width>101</width>
-     <height>111</height>
+     <height>41</height>
     </rect>
    </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>20</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-     <underline>true</underline>
-    </font>
-   </property>
    <property name="styleSheet">
-    <string notr="true">background-image: url(:/resource/images/kpath.png);</string>
-   </property>
-   <property name="text">
-    <string>形象</string>
-   </property>
-  </widget>
-  <widget class="QRadioButton" name="radioButton">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>260</y>
-     <width>141</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>30</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">image: url(:/resource/images/pic1.png);
-background-image: url(:/resource/images/kpath.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QRadioButton" name="radioButton_2">
-   <property name="geometry">
-    <rect>
-     <x>390</x>
-     <y>240</y>
-     <width>91</width>
-     <height>141</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>30</width>
-     <height>40</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-image: url(:/resource/images/kpath.png);
-image: url(:/resource/images/pic3.png);</string>
+    <string notr="true">border-image: url(:/resource/images/back.png);</string>
    </property>
    <property name="text">
     <string/>

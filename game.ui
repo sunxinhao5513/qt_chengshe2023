@@ -20,7 +20,7 @@
    <property name="geometry">
     <rect>
      <x>400</x>
-     <y>530</y>
+     <y>520</y>
      <width>201</width>
      <height>181</height>
     </rect>
@@ -131,9 +131,9 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>80</y>
-     <width>951</width>
+     <x>80</x>
+     <y>90</y>
+     <width>851</width>
      <height>121</height>
     </rect>
    </property>
@@ -141,7 +141,6 @@
     <font>
      <family>Lot</family>
      <pointsize>56</pointsize>
-     <weight>50</weight>
      <italic>false</italic>
      <bold>false</bold>
     </font>

@@ -19,7 +19,6 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowTitle("game");
     init();
     action();
-
 }
 
 void MainWindow::init(){
@@ -75,21 +74,20 @@ void MainWindow::keyPressEvent(QKeyEvent* event){
     }
     if(event->key()==Qt::Key_S){
         disconnect(dropTimer, SIGNAL(timeout()), this, SLOT(advance()));
-        stoppage*stop=new stoppage();
         stop->show();
     }
 }
 void MainWindow::keyReleaseEvent(QKeyEvent *event){
     if(event->key()==Qt::Key_C){
         connect(dropTimer, SIGNAL(timeout()), this, SLOT(advance()));
+        delete stop;
     }
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event){
     if(event->button() == Qt::LeftButton && !life){
-        game *g = new game;
-        g->show();
         this->close();
+        emit returnTo();
     }
 }
 
@@ -156,7 +154,7 @@ void MainWindow::processDots(){
 }
 void MainWindow::read_maxscore()
 {
-    QFile file("../flying_pacman/score.txt");
+    QFile file("D:/code/final/score.txt");
     bool isOK = file.open(QIODevice::ReadOnly);
     if(isOK == true){
         QTextStream stream(&file);
@@ -208,12 +206,12 @@ void MainWindow::Lose()
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete scene;
-    delete bird;
     for(int i = 0; i < 4; ++i){
         delete topGhost[i];
         delete bottomGhost[i];
     }
+    delete bird;
+    delete scene;
     delete dropTimer;
-
+    delete stop;
 }

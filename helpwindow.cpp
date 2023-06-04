@@ -8,7 +8,7 @@ helpwindow::helpwindow(QWidget *parent) :
     ui(new Ui::helpwindow)
 {
     ui->setupUi(this);
-    this->resize(QSize(600,300));
+    this->resize(QSize(600,400));
     setWindowTitle("help");
 }
 
@@ -18,7 +18,7 @@ helpwindow::~helpwindow()
 }
 void helpwindow::paintEvent(QPaintEvent *event){
     QPainter p(this);
-    p.drawPixmap(0,0,this->width(),this->height(),QPixmap(":/resource/images/help.jpg"));
+    p.drawPixmap(0,0,this->width(),this->height(),QPixmap(":/resource/images/help.png"));
 }
 
 void helpwindow::on_back_clicked()

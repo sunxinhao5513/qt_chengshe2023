@@ -52,8 +52,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     Images.qrc \
-    Music.qrc
+    Music.qrc \
+    font.qrc
 
 DISTFILES += \
     README.md \
+    fonts/Lot.otf \
     the_whole_homework.pro.user

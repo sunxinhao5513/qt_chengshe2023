@@ -3,7 +3,7 @@
 #include <QRandomGenerator>
 
 dotClass::dotClass(): dotImage(new QPixmap){
-    dotImage->load("../Bird/OIP.png");
+    dotImage->load(":/resource/images/OIP.png");
     setPixmap(*dotImage);
     setScale(0.05);
     int randomx = QRandomGenerator::global()->bounded(700) + 850;
