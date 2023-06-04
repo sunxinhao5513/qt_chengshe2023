@@ -13,7 +13,8 @@
 #include <QTextEdit>
 #include <QDataStream>
 #include <QTextStream>
-#include "game.h"
+#include "stoppage.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -28,6 +29,7 @@ public:
 
 signals:
     void lose();//lose()为失败信号 //TODO：失败窗口
+    void returnTo();
 
 public slots:
     void advance();//更新游戏场景
@@ -60,7 +62,8 @@ private:
 
     // QWidget interface
 protected:
-    void keyReleaseEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event) override;
+    stoppage* stop = new stoppage;
 };//TODO:背景、音乐
 
 #endif // MAINWINDOW_H

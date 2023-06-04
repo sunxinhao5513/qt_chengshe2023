@@ -8,6 +8,7 @@
 #include "gameinit.h"
 #include "changewindow.h"
 #include <QPalette>
+#include "mainwindow.h"
 
 game::game(QWidget *parent)
     : QWidget(parent)
@@ -16,9 +17,8 @@ game::game(QWidget *parent)
     setAutoFillBackground(true);
     ui->setupUi(this);
     this->resize(QSize(1000,700));
-    QSoundEffect *music=new QSoundEffect();
     music->setSource(QUrl::fromLocalFile("://music/Flappy-Bird-Theme-Song.wav"));
-    music->setLoopCount(-1);
+    music->setLoopCount(music->Infinite);
     music->play();
 
 }
@@ -30,12 +30,15 @@ void game::paintEvent(QPaintEvent *event){
 game::~game()
 {
     delete ui;
+    delete music;
+    delete helpwind;
+    delete changewind;
+    if(window != nullptr) delete window;
 }
 
 
 void game::on_helpbutton_clicked()
 {
-    helpwindow*helpwind=new helpwindow();
     helpwind->show();
 }
 
@@ -46,13 +49,21 @@ void game::on_quitbutton_clicked()
 
 void game::on_startbutton_clicked()
 {
-    this->close();
-    MainWindow *newgame=new MainWindow();
-    newgame->show();
+    window = new MainWindow();
+    connect(window, &MainWindow::returnTo, this, &game::handleReturnTo);
+    this->hide();
+    window->show();
 }
 
 void game::on_pushButton_clicked()
 {
-    changewindow*changewind=new changewindow();
+    changewind->music = music;
     changewind->show();
 }
+
+void game::handleReturnTo(){
+    this->show();
+    window->close();
+    delete window;
+}
+

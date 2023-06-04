@@ -32,12 +32,12 @@ void PacbirdClass::offSuper(){
 }
 
 void PacbirdClass::updatePosition(){
-    speed += 1;
+    speed += 2;
     setPos(x(), y() + speed * 2 / 3);
 }
 
 void PacbirdClass::flap(){
-    speed -= 20;
+    speed -= 40;
 }
 
 PacbirdClass::~PacbirdClass(){
